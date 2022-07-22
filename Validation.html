@@ -1,0 +1,442 @@
+<html>
+    <head>
+        <title>Validation</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            //Reg Ex Declaration - Globaly.
+			var $FNameLNameRegEx = /^([a-zA-Z]{2,20})$/;
+			var $FullNameRegEx = /^([a-zA-Z ]{2,40})$/;
+			var $BankAccountNameRegEx = /^([a-zA-Z ]{2,60})$/;
+			var $PasswordRegEx = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,12}$/;
+
+			var $EmailIdRegEx = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b$/i;
+			var $ConNoRegEx = /^([0-9]{10})$/;
+			var $AgeRegEx = /^([0-9]{1,2})$/;
+			var $AadhaarNoRegEx = /^([0-9]{12})$/;
+			var $GSTNoRegEx=/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+			var $IndianDrivingLicenseNoRegEx = /^([A-Z]{2,3}[-/0-9]{8,13})$/;
+			var $IndianVehicleRegNoRegEx = /^([A-Z]{2}[0-9]{1,2}[A-Z]{1,3}[0-9]{1,4})$/;
+			var $PincodeRegEx = /^[1-9][0-9]{5,6}$/;
+			var $PANNoRegEx = /^[A-Z]{3}[ABCFGHLJPT][A-Z][0-9]{4}[A-Z]$/;
+			var $IFSCCodeRegEx = /^[A-Za-z]{4}0[A-Z0-9a-z]{6}$/;
+			var $BankAccountNoRegEx = /^([0-9]{9,18})$/;
+			var $LatitudeLongitude=/^(-?(?:1[0-7]|[1-9])?\d(?:\.\d{1,8})?|180(?:\.0{1,8})?)$/;
+
+
+            $(document).ready(function(){
+
+                Flag=0;
+
+                $("#textFname").blur(function(){
+                    $("#Fname").empty();
+                    if($(this).val()=="" || $(this).val()==null){
+                        $("#Fname").html("* name required")
+                        Flag=0;
+                    }
+                    else{
+                        if(!$(this).val().match($FNameLNameRegEx)){
+                            $("#Fname").html("* name invalid")
+                            Flag=0;
+                        }
+                        else{
+                            Flag=1;
+                        }
+                    }
+
+                })
+                Flag=0;
+                $("#textLname").blur(function(){
+                    $("#Lname").empty();
+                    if($(this).val()=="" || $(this).val()==null){
+                        $("#Lname").html("* name required")
+                        Flag=0;
+                    }
+                    else{
+                        if(!$(this).val().match( $FNameLNameRegEx )){
+                            $("#Lname").html("* name invalid")
+                            Flag=0;
+                        }
+                        else{
+                            Flag=1;
+                        }
+                    }
+
+                    })
+                    Flag=0;
+
+                    $("#textFullname").blur(function(){
+                        $("#Fullname").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#Fullname").html("* name required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($FullNameRegEx)){
+                                $("#Fullname").html("* name invalid")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+
+                    $("#textAreaAddress").blur(function(){
+                        $("#Address").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#Address").html("* address required")
+                            Flag=0;
+                        }
+                        else{
+                            Flag=1;
+                        }
+
+                        })
+                        Flag=0;
+
+                        $("#textBKname").blur(function(){
+                        $("#BKname").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#BKname").html("* name required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($BankAccountNameRegEx)){
+                                $("#BKname").html("* name invalid")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#textPassword").blur(function(){
+                        $("#Password").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#Password").html("* password required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($PasswordRegEx)){
+                                $("#Password").html("* password invalid")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#email").blur(function(){
+                        $("#Email").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#Email").html("* Email required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($EmailIdRegEx)){
+                                $("#Email").html("* Email invalid")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#contactNo").blur(function(){
+                        $("#conNo").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#conNo").html("* Contact number required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($ConNoRegEx)){
+                                $("#conNo").html("* invalid contact number")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#Age").blur(function(){
+                        $("#age").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#age").html("* age required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($AgeRegEx)){
+                                $("#age").html("* invalid age")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#AddharNo").blur(function(){
+                        $("#AdNo").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#AdNo").html("* Addhar no. required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($AadhaarNoRegEx)){
+                                $("#AdNo").html("* invalid addhar number")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#GSTNo").blur(function(){
+                        $("#gstNo").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#gstNo").html("* GST no. required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($GSTNoRegEx)){
+                                $("#gstNo").html("* invalid gst number")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#licenceNo").blur(function(){
+                        $("#LNo").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#LNo").html("* Licence no. required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($IndianDrivingLicenseNoRegEx)){
+                                $("#LNo").html("* invalid licence number")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#vahicalNo").blur(function(){
+                        $("#vNo").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#vNo").html("* Vehical no. required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($IndianVehicleRegNoRegEx)){
+                                $("#vNo").html("* invalid Vehical number")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#pincodeNo").blur(function(){
+                        $("#pinNo").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#pinNo").html("* Pin code required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($PincodeRegEx)){
+                                $("#pinNo").html("* invalid Pin code")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#panNo").blur(function(){
+                        $("#pNo").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#pNo").html("* PAN no. required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($PANNoRegEx)){
+                                $("#pNo").html("* invalid PAN No.")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#IFSCCode").blur(function(){
+                        $("#iCode").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#iCode").html("* IFSC code required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($IFSCCodeRegEx)){
+                                $("#iCode").html("* invalid IFSC code")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+                        Flag=0;
+                        
+                        $("#accountNo").blur(function(){
+                        $("#aNo").empty();
+                        if($(this).val()=="" || $(this).val()==null){
+                            $("#aNo").html("* Account No. required")
+                            Flag=0;
+                        }
+                        else{
+                            if(!$(this).val().match($BankAccountNoRegEx)){
+                                $("#aNo").html("* invalid Account No.")
+                                Flag=0;
+                            }
+                            else{
+                                Flag=1;
+                            }
+                        }
+
+                        })
+
+
+                        $("#submit").click(function(){
+                            if(Flag==1){
+                                alert("signup successfully");
+                            }
+                            else{
+                                alert("invalid input");
+                            }
+                        })
+
+            })
+
+        </script>
+    </head>
+
+    <body style="background-color: rgb(0, 255, 191);">
+        <p class="text-center" style="margin-top: 3%; font-size: 30px;"><strong>Car Loan Application</strong></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="txt"><b>First Name:</b></div>
+                    <input type="text" id="textFname" style="margin-top: 5px;"/><br>
+                    <small id="Fname" style="color: red;"></small><br>
+                    
+                    <div class="txt"><b>Last Name:</b></div>
+                    <input type="text" id="textLname" style="margin-top: 5px;"/><br>
+                    <small id="Lname" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Full Name:</b></div>
+                    <input type="text" id="textFullname" style="margin-top: 5px;"/><br>
+                    <small id="Fullname" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Address :</b></div>
+                    <textarea type="text" id="textAreaAddress" style="margin-top: 5px;"></textarea><br>
+                    <small id="Address" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Bank Account Name:</b></div>
+                    <input type="text" id="textBKname" style="margin-top: 5px;"/><br>
+                    <small id="BKname" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Password:</b></div>
+                    <input type="password" id="textPassword" style="margin-top: 5px;"/><br>
+                    <small id="Password" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Email:</b></div>
+                    <input type="email" id="email" style="margin-top: 5px;"/><br>
+                    <small id="Email" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Contact no:</b></div>
+                    <input type="number" id="contactNo" style="margin-top: 5px;"/><br>
+                    <small id="conNo" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Age:</b></div>
+                    <input type="number" id="Age" style="margin-top: 5px;"/><br>
+                    <small id="age" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Addhar no:</b></div>
+                    <input type="number text" id="AddharNo" style="margin-top: 5px;"/><br>
+                    <small id="AdNo" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>GST no:</b></div>
+                    <input type="number" id="GSTNo" style="margin-top: 5px;"/><br>
+                    <small id="gstNo" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Licence no:</b></div>
+                    <input type="number text" id="licenceNo" style="margin-top: 5px;"/><br>
+                    <small id="LNo" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Vahical no:</b></div>
+                    <input type="number text" id="vahicalNo" style="margin-top: 5px;"/><br>
+                    <small id="vNo" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Pincode no:</b></div>
+                    <input type="number" id="pincodeNo" style="margin-top: 5px;"/><br>
+                    <small id="pinNo" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Pan no:</b></div>
+                    <input type="number" id="panNo" style="margin-top: 5px;"/><br>
+                    <small id="pNo" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>IFSC code:</b></div>
+                    <input type="number" id="IFSCCode" style="margin-top: 5px;"/><br>
+                    <small id="iCode" style="color: red;"></small><br>
+                    
+                    <div class="txt" ><b>Account no:</b></div>
+                    <input type="number" id="accountNo" style="margin-top: 5px;"/><br>
+                    <small id="aNo" style="color: red;"></small><br>
+
+                    <button class="btn btn-primary" id="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
